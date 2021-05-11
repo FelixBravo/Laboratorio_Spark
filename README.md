@@ -1,7 +1,7 @@
 # Introducción a Spark
 
-- [Introduccion a Spark](#introduccion-a-spark)
-  - [Modulo 1 Conociendo Apache Spark](#modulo-1-conociendo-apache-spark)
+- [Introducción a Spark](#introduccion-a-spark)
+  - [Módulo 1 Conociendo Apache Spark](#modulo-1-conociendo-apache-spark)
     - [Presentacion del Laboratorio](#presentacion-del-laboratorio)
     - [Introduccion a Apache Spark](#introduccion-a-apache-spark)
       - [Historia](#historia)
