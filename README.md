@@ -264,151 +264,14 @@ Los RDD y DataFrames tienen 3 características base
       descargar los datos, cuando cerremos el contenedor y lo tengamos que ejecutar nuevamente.
       
 ![spark_38](images/spark_38.png)    
-      
 
-### Opción 2 Instalación del ambiente de trabajo en Ubuntu
-
-#### Instalación de JRE, Python, PIP y Scala
-
-Instalaremos lo siguiente en linux/wsl2
-
-- Agregamos java8 usando open jdk
-
-```bash
-sudo ad-apt-repository ppa:openjdk-r/ppa
-sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get -y install openjdk-8-jre
-```
-
-- Python 3.7 esto porque spark 2.4 no tiene soporte aun para python 3.8
-
-```bash
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt update
-sudo apt install python3.7
-```
-
-- Scala
-
-```bash
-sudo apt-get -y install scala
-```
-
-- Pip3
-
-```bash
-sudo apt-get -y install python3-pip
-sudo pip3 install py4j
-#traduce condigo python a java
-```
-
-#### Instalación de  Apache Spark
-
-En la página de Apache Spark <https://spark.apache.org/downloads.html>
-
-Seleccionamos la opción Spark release 2.4.1, con el Pre-built for Apache Hadoop 2.7, y después haces click en Download.
-
-Descarga directo a wsl con curl o de forma habitual con windows
-
-```bash
-curl -o spark-2.4.7-bin-hadoop2.7.tgz https://downloads.apache.org/spark/spark-2.4.7/spark-2.4.7-bin-hadoop2.7.tgz
-```
-
-Descomprimir el archivo (debes estar en el folder donde se encuentre descargado tu archivo)
-
-```bash
-tar -xvf spark-2.4.7-bin-hadoop2.7.tgz
-
-#verificamos
-ls
-```
-
-Renombramos la carpeta/directorio
-
-```bash
-mv spark-2.4.7-bin-hadoop2.7 spark
-```
-
-movemos la carpeta a home
-
-```bash
-mv spark ~/
-```
-
-Borramos el archivo tgz que descargamos
-
-```bash
-rm spark-2.4.7-bin-hadoop2.7.tgz
-```
-
-#### Instalación de Anaconda
-
-```bash
-# Descargamos
-wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
-
-# Instalamos
-bash Anaconda3-2020.02-Linux-x86_64.sh
-
-# Do you wish the installer to initialize Anaconda3
-# by running conda init? [yes|no]
-# [no] >>> no
-```
-
-#### Instalamos py4j en Anaconda
-
-Para poder hacer uso del instalador de anaconda exportamos la siguiente variable
-
-```bash
-# la variable $USER para acceder tu nombre de usuario
-export PATH=/home/$USER/anaconda3/bin:$PATH
-
-# Instalamos py4j
-conda install py4j
-```
-
-### Jupyter vs CLI: ejecución de Spark desde la linea de comandos
-
-Hecha la instalación de Spark agregaremos varias variables de entorno en el archivo .bashrc, vamos al final del archivo y agregamos lo siguiente
-
-**Nota:** Si por alguna razón usas zshell  y no la bash (la terminal por defecto sin customizar) deberás incluir la configuracion en el archivo .zshrc y no en el archivo .bashrc.
-
-```bash
-sudo nano .bashrc
-
-## Path de Java
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-export PATH=$JAVA_HOME:$PATH
-
-## Spark
-export SPARK_HOME='/home/'$USER'/spark'
-export PATH=$SPARK_HOME:$PATH
-
-## Python para ser utilizable por Spark
-export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
-export PYSPARK_PYTHON=python3.7
-
-# Guardamos el archivo con ctrl + o
-# recargamos el archivo
-source .bashrc
-```
-
-utilizé la variable de entorno $USER para que no se tenga que ajustar a cada instalación para aquellas personas que aún no utilizan linux de forma habitual y esto solo agrega el nombre de usuario que tienes en la terminal al path.
-
-Hecho lo anterior vemos los binarios que Spark posee.
-
-```bash
-ls ~/spark/bin/
-```
 
 En los binarios observamos los siguientes.
 
 - **pyspark**  permite ejecutar código en vivo  como un interprete
 - **spark-submit** permite ejecutar un script como cualquier archivo.py
 
-Descargamos el repositorio <https://github.com/FelixBravo/Laboratorio_Spark/raw/main/laboratorio-apache-spark.zip>
-
-Utilizamos los archivos data.csv y codeExample.py
+Utilizamos los archivos data.csv y codeExample.py que se encuentran entre los archivos descargados.
 
 ```bash
 head -n 10 data.csv
@@ -473,63 +336,14 @@ if __name__ == "__main__":
 
 ```
 
-Instala la dependencia **pyspark**
-
-```bash
-conda install pyspark
-```
-
 Ejecutamos el código con spark-submit y optemos los resultados
 
 ```bash
 ~/spark/bin/spark-submit codeExample.py data.csv
 ```
 
-Solucionar el primer warning descarga los binarios de hadoop (version 2.7.3, puedes probar 2.10.0)
 
-<https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz>
-
-Y ejecuta lo siguiente en la terminal
-
-```bash
-# descomprimir
-tar -xvf hadoop-2.7.3.tar.gz
-
-#Renombramos la carpeta/directorio
-mv hadoop-2.7.3.tar.gz hadoop
-
-# movemos la carpeta a home
-mv hadoop ~/
-```
-
-Agrega las siguientes variables de entorno segun lo anterior, lo agregue después de las de java y antes de Spark
-
-```bash
-export HADOOP_HOME='/home/'$USER'/hadoop'
-export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME'/lib/native/libhadoop.so.1.0.0'
-```
-
-### Jupyter vs CLI: ejecución de Spark en Jupyter Notebook
-
-Agregamos variables de entorno para trabajar con jupyter notebook a al archivo .bashrc o .zshrc según sea el caso.
-
-```bash
-export PYSPARK_DRIVER_PYTHON="jupyter"
-export PYSPARK_DRIVER_PYTHON_OPTS="notebook"
-export PATH=/home/spark/anaconda3/bin:$PATH
-```
-
-te recomiendo instalar jupyter via pip puntualmente para la version 3.7 de python, la segunda recomendación es utilizar un venv, aunque siempre es util tener jupyter a mano, si lo tienes para python 3.8 es necesario borrar todo rastro de la instalacion.
-
-```bash
-python3.7 -m pip install jupyter
-```
-
-Ahora podemos llamar a jupyter de forma normal o solo escribiendo pyspark.
-
-## Hasta aca llega la Opción 2 de configuracion en UBUNTU.
-
-## Seguiremos utilizando la opcion 1 de configuración con los contenedores DOCKER.
+## JUPYTER NOTEBOOK.
 
 Ahora para entrar a Jupyter notebook, en la terminal donde se ejecuto el contenedor, te tiene que entregar unas URLs en donde puedes acceder a Jupyter, solo cambia el host por "localhost".
 
