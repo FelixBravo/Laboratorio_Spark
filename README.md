@@ -165,10 +165,11 @@ Los RDD y DataFrames tienen 3 características base
 
 ## Módulo 2 Configuración Ambiente de Trabajo
 
-### Opción 1 Instalación del ambiente de trabajo en contenedor Docker]
+### Opción 1 Instalación del ambiente de trabajo en contenedor Docker
       -> Imágenes de Docker en Juniper
       
-        Primero buscamos una imagen que mejor se acomode al grupo de Software que necesitamos tener en nuestro contenedor, en la siguiente URL, puedes buscar la imagen que mejor se adapte a tus necesidades, aca la URL:
+        Primero buscamos una imagen que mejor se acomode al grupo de Software que necesitamos tener en nuestro contenedor, en la siguiente URL, puedes buscar 
+        la imagen que mejor se adapte a tus necesidades, aca la URL:
         
         <https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-pyspark-notebook>
         
@@ -184,7 +185,8 @@ Los RDD y DataFrames tienen 3 características base
 
 ![spark_29](images/spark_29.png) 
        
-        Tambien pueden clonar el repositorio de la imagen en caso que necesiten Modificar el archivo dockerfile o docker-compose, con el siguiente comando clonan el repositorio.
+        Tambien pueden clonar el repositorio de la imagen en caso que necesiten Modificar el archivo dockerfile o docker-compose, con el siguiente comando 
+        clonan el repositorio.
                 
         git clone <https://github.com/jupyter/docker-stacks.git>
       
@@ -196,15 +198,19 @@ Los RDD y DataFrames tienen 3 características base
 
 ![spark_30](images/spark_30.png) 
            
-        El comando recién ejecutado, levantara un contenedor llamado "sparklab", abrira puertos locales 8888 de la maquina local, donde estara escuchando el puerto 8888 del contenedor, también se abren los puertos desdes el 4040 hasta el 4050, se habilita el Jupyter Notebook, y crea un Bind Mount (volumen) en la raiz (pwd) más carpeta /file/ donde quedaran guardados localmente (maquina anfitriona), los documentos que se guarden en el contenedor en la ruta "/home/jovyan/work".
-        Tambien es importante destacar que una vez se termine de ejecutar el contenedor, este se eliminara, por eso es importante guardar los archivos en la ruta "/home/jovyan/work", del contenedor.
+        El comando recién ejecutado, levantara un contenedor llamado "sparklab", abrira puertos locales 8888 de la maquina local, donde estara escuchando el puerto
+        8888 del contenedor, también se abren los puertos desdes el 4040 hasta el 4050, se habilita el Jupyter Notebook, y crea un Bind Mount (volumen) en la raiz
+        (pwd) más carpeta /file/ donde quedaran guardados localmente (maquina anfitriona), los documentos que se guarden en el contenedor en
+        la ruta"/home/jovyan/work". Tambien es importante destacar que una vez se termine de ejecutar el contenedor, este se eliminara, por eso es importante
+        guardar los archivos en la ruta "/home/jovyan/work", del contenedor.
         
       -> Configuracion de variables de entorno
       
         Ahora para saber si esta corriendo de forma correcta el contenedor, abrimos otra ventana de terminal y ejecutamos:
           - docker ps
         
-        Y debe mostrar el contenedor que se esta ejecutando, luego de eso debemos entrar al contenedor, para crear unas variables de entorno necesarias para la ejecucion de los programas.
+        Y debe mostrar el contenedor que se esta ejecutando, luego de eso debemos entrar al contenedor, para crear unas variables de entorno necesarias para la
+        ejecucion de los programas.
         
 ![spark_31](images/spark_31.png) 
         
@@ -239,7 +245,8 @@ Los RDD y DataFrames tienen 3 características base
        
     -> Descarga de Datos
       
-      Ahora desde la misma terminal del contenedor, descargaremos y descomprimiremos un archivo .zip, con un conjunto de archivos que utilizaremos a lo largo del Laboratorio.
+      Ahora desde la misma terminal del contenedor, descargaremos y descomprimiremos un archivo .zip, con un conjunto de archivos que utilizaremos a lo largo 
+      del Laboratorio.
       
        - wget https://github.com/FelixBravo/Laboratorio_Spark/raw/main/laboratorio-apache-spark.zip
 
@@ -253,7 +260,8 @@ Los RDD y DataFrames tienen 3 características base
       
 ![spark_37](images/spark_37.png)
 
-      Finalmente llevamos la carpeta al directorio "\work" donde tenemos la información linqueada con nuestra máquina anfitriona, para asi no tener que volver a descargar los datos, cuando cerremos el contenedor y lo tengamos que ejecutar nuevamente.
+      Finalmente llevamos la carpeta al directorio "\work" donde tenemos la información linqueada con nuestra máquina anfitriona, para así no tener que volver a 
+      descargar los datos, cuando cerremos el contenedor y lo tengamos que ejecutar nuevamente.
       
 ![spark_38](images/spark_38.png)    
       
@@ -294,9 +302,9 @@ sudo pip3 install py4j
 #traduce condigo python a java
 ```
 
-#### Instalacion de  Apache Spark
+#### Instalación de  Apache Spark
 
-En la pagina de Apache Spark <https://spark.apache.org/downloads.html>
+En la página de Apache Spark <https://spark.apache.org/downloads.html>
 
 Seleccionamos la opción Spark release 2.4.1, con el Pre-built for Apache Hadoop 2.7, y después haces click en Download.
 
@@ -333,7 +341,7 @@ Borramos el archivo tgz que descargamos
 rm spark-2.4.7-bin-hadoop2.7.tgz
 ```
 
-#### Instalacion de Anaconda
+#### Instalación de Anaconda
 
 ```bash
 # Descargamos
@@ -359,9 +367,9 @@ export PATH=/home/$USER/anaconda3/bin:$PATH
 conda install py4j
 ```
 
-### Jupyter vs CLI: ejecucion de Spark desde la linea de comandos
+### Jupyter vs CLI: ejecución de Spark desde la linea de comandos
 
-Hecha la instalacion de Spark agregaremos varias variables de entorno en el archivo .bashrc, vamos al final del archivo y agregamos lo siguiente
+Hecha la instalación de Spark agregaremos varias variables de entorno en el archivo .bashrc, vamos al final del archivo y agregamos lo siguiente
 
 **Nota:** Si por alguna razón usas zshell  y no la bash (la terminal por defecto sin customizar) deberás incluir la configuracion en el archivo .zshrc y no en el archivo .bashrc.
 
@@ -385,7 +393,7 @@ export PYSPARK_PYTHON=python3.7
 source .bashrc
 ```
 
-utilizé la variable de entorno $USER para que no se tenga que ajustar a cada instalacion para aquellas personas que aun no utilizan linux de forma habitual y esto solo agrega el nombre de usuario que tienes en la terminal al path.
+utilizé la variable de entorno $USER para que no se tenga que ajustar a cada instalación para aquellas personas que aún no utilizan linux de forma habitual y esto solo agrega el nombre de usuario que tienes en la terminal al path.
 
 Hecho lo anterior vemos los binarios que Spark posee.
 
@@ -501,7 +509,7 @@ export HADOOP_HOME='/home/'$USER'/hadoop'
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME'/lib/native/libhadoop.so.1.0.0'
 ```
 
-### Jupyter vs CLI: ejecucion de Spark en Jupyter Notebook
+### Jupyter vs CLI: ejecución de Spark en Jupyter Notebook
 
 Agregamos variables de entorno para trabajar con jupyter notebook a al archivo .bashrc o .zshrc según sea el caso.
 
@@ -519,9 +527,9 @@ python3.7 -m pip install jupyter
 
 Ahora podemos llamar a jupyter de forma normal o solo escribiendo pyspark.
 
-## Hasta aca llega la Opcion 2 de configuracion en UBUNTU.
+## Hasta aca llega la Opción 2 de configuracion en UBUNTU.
 
-## Seguiremos utilizando la opcion 1 de configuracion con los contenedores DOCKER.
+## Seguiremos utilizando la opcion 1 de configuración con los contenedores DOCKER.
 
 Ahora para entrar a Jupyter notebook, en la terminal donde se ejecuto el contenedor, te tiene que entregar unas URLs en donde puedes acceder a Jupyter, solo cambia el host por "localhost".
 
@@ -536,7 +544,7 @@ from pyspark.sql import SparkSession
 
 ![spark_5](images/spark_5.png)
 
-SparkSession engloba los contextos, permite mejores formas de configuracion de Session puedo invocar contextos, podemos pasar contextos a sesiones.
+SparkSession engloba los contextos, permite mejores formas de configuración de Session puedo invocar contextos, podemos pasar contextos a sesiones.
 
 Tenemos la herramienta Spark UI donde podemos administrar RDDs o Dataframes
 
@@ -570,7 +578,7 @@ spark2 = SparkSession(sc)
 spark2
 ```
 
-## Modulo 3 Operaciones RDDs
+## Módulo 3 Operaciones RDDs
 
 ### RDD y DataFrames
 
