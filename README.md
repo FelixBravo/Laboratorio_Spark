@@ -67,24 +67,24 @@ Requisitos previos
 
 Spark es un framework de trabajo para el desarrollo de grandes datos o big data y se preocupa de la velocidad y continuidad del procesamiento de datos, en contraparte de Hadoop que se preocupa por un almacenamiento grande de datos.
 
-Podemos utilizar multiples lenguajes
+Podemos utilizar múltiples lenguajes
 
 - Java
 - Scala (Spark corre nativamente aquí)
 - Python
 - R
 
-¿Que no es Apache Spark?
+¿Qué no es Apache Spark?
 
 No es una base de datos
 
 ![spark_2](images/spark_1.png)
 
-**OLTP:** Sistema de modificacion de Base de Datos online (Transaccional)
+**OLTP:** Sistema de modificación de Base de Datos online (Transaccional)
 
 **OLAP:** Sistema de respuesta de consulta de datos online (Analisis)
 
-Spark debe estar conectado a un Data warehouse para poder aprovechar toda su funcionalidad
+Spark debe estar conectado a un Data warehouse para poder aprovechar toda su funcionalidad.
 
 #### Historia
 
@@ -118,7 +118,7 @@ Los **RDD** son el **componente mínimo con el cual podemos comunicarnos con Spa
 
 - **Creación simple** no tienen una estructura formalmente, adoptan la mas intuitiva (listas, tuplas, etc).
 
-- **Inmutabilidad** Posterior a su creación no se pueden modificar, permite persistencia en los datos pero en cierto punto tienes que lanzar un garbage collector para  eliminar los RDDs basura para poder limpiar la memoria
+- **Inmutabilidad** Posterior a su creación no se pueden modificar, permite persistencia en los datos pero en cierto punto tienes que lanzar un garbage collector para  eliminar los RDDs basura para poder limpiar la memoria.
 
 - **Ejecución perezosa**  a menos que se realize una acción.
 
@@ -166,40 +166,52 @@ Los RDD y DataFrames tienen 3 características base
 ## Módulo 2 Configuración Ambiente de Trabajo
 
 ### Opción 1 Instalación del ambiente de trabajo en contenedor Docker]
-      -> Imagenes de Docker en Juniper
+      -> Imágenes de Docker en Juniper
       
-        primero buscamos una imagen que mejor se acomode al grupo de Software que necesitamos tener en nuestro contenedor, en la siguiente URL, puedes buscar la imagen que mejor
-        se adapte a tus necesidades, aca la URL:
-        https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-pyspark-notebook
+        Primero buscamos una imagen que mejor se acomode al grupo de Software que necesitamos tener en nuestro contenedor, en la siguiente URL, puedes buscar la imagen que mejor se adapte a tus necesidades, aca la URL:
+        
+        <https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-pyspark-notebook>
+        
+![spark_27](images/spark_27.png)        
         
         Para el laboratorio nosotros utilizamos la imagen jupyter/all-spark-notebook, la cual se encuentra en Docker Hub, para instalar realizar lo siguiente:
         
+![spark_28](images/spark_28.png) 
+        
         En la consola de Docker, ejecutan lo siguiente para bajar la imagen:
+           
            - docker pull jupyter/all-spark-notebook
+
+![spark_29](images/spark_29.png) 
        
         Tambien pueden clonar el repositorio de la imagen en caso que necesiten Modificar el archivo dockerfile o docker-compose, con el siguiente comando clonan el repositorio.
                 
-        git clone https://github.com/jupyter/docker-stacks.git
+        git clone <https://github.com/jupyter/docker-stacks.git>
       
       -> Ejecutar contenedor
       
         Ahora que se tiene la imagen, debemos ejecutar un contenedor de esa imagen, con el siguiente comando:
         
            - docker run --rm --name sparklab -p 8888:8888 -p 4040-4050:4040-4050 -e JUPYTER_ENABLE_LAB=yes -v "$PWD"/file:/home/jovyan/work jupyter/all-spark-notebook
+
+![spark_30](images/spark_30.png) 
            
-        El comando recien ejecutado, levantara un contenedor llamado "sparklab", abrira puertos locales 8888 de la maquina local estara escuchando el puerto 8888 del contenedor,
-        tambien se abren los puertos desdes el 4040 hasta el 4050, se habilita el Jupyter Notebook, y crea un Bind Mount (volumen) en la raiz (pwd) mas carpeta /file/,
-        donde quedaran guardados localmente (maquina anfitriona) los documentos que se guarden en el contenedor en la ruta "/home/jovyan/work".
+        El comando recién ejecutado, levantara un contenedor llamado "sparklab", abrira puertos locales 8888 de la maquina local, donde estara escuchando el puerto 8888 del contenedor, también se abren los puertos desdes el 4040 hasta el 4050, se habilita el Jupyter Notebook, y crea un Bind Mount (volumen) en la raiz (pwd) más carpeta /file/ donde quedaran guardados localmente (maquina anfitriona), los documentos que se guarden en el contenedor en la ruta "/home/jovyan/work".
+        Tambien es importante destacar que una vez se termine de ejecutar el contenedor, este se eliminara, por eso es importante guardar los archivos en la ruta "/home/jovyan/work", del contenedor.
         
       -> Configuracion de variables de entorno
       
-        Ahora para saber si esta corriendo de forma correcta el contenedor se debe ejecutar:
+        Ahora para saber si esta corriendo de forma correcta el contenedor, abrimos otra ventana de terminal y ejecutamos:
           - docker ps
         
         Y debe mostrar el contenedor que se esta ejecutando, luego de eso debemos entrar al contenedor, para crear unas variables de entorno necesarias para la ejecucion de los programas.
         
+![spark_31](images/spark_31.png) 
+        
         Para entrar al contenedor, ejecutamos:
          - docker exec -it sparklab bash
+
+![spark_32](images/spark_32.png) 
         
         Ahora desde el contenedor en la ruta del usuario, en este caso "/home/jovyan/", modificamos el archivo .bashrc y agregamos las variables de entorno:
         Para entrar a modificar el archivo .bashrc
@@ -221,19 +233,34 @@ Los RDD y DataFrames tienen 3 características base
             export PYSPARK_DRIVER_PYTHON_OPTS="notebook"
             export PATH=/opt/conda/bin:$PATH
             
+![spark_33](images/spark_33.png)      
+            
          Para salir del archivo "control + x", guardas y confirmas el nombre del archivo, luego te deja nuevamente en el promp de la terminal.
        
     -> Descarga de Datos
       
-      Ahora descargaremos y descomprimiremos un archivo .zip, con un conjunto de archivos que utilizaremos a lo largo del Laboratorio.
+      Ahora desde la misma terminal del contenedor, descargaremos y descomprimiremos un archivo .zip, con un conjunto de archivos que utilizaremos a lo largo del Laboratorio.
       
        - wget https://github.com/FelixBravo/Laboratorio_Spark/raw/main/laboratorio-apache-spark.zip
+
+![spark_35](images/spark_35.png)   
       
        - unzip aboratorio-apache-spark.zip
 
-### Opcion 2 Instalacion del ambiente de trabajo en Ubuntu
+![spark_36](images/spark_36.png) 
 
-#### Instalacion de JRE, Python, PIP y Scala
+      Eliminamos el archivo .zip y cambiamos el nombre de la carpeta.
+      
+![spark_37](images/spark_37.png)
+
+      Finalmente llevamos la carpeta al directorio "\work" donde tenemos la información linqueada con nuestra máquina anfitriona, para asi no tener que volver a descargar los datos, cuando cerremos el contenedor y lo tengamos que ejecutar nuevamente.
+      
+![spark_38](images/spark_38.png)    
+      
+
+### Opción 2 Instalación del ambiente de trabajo en Ubuntu
+
+#### Instalación de JRE, Python, PIP y Scala
 
 Instalaremos lo siguiente en linux/wsl2
 
