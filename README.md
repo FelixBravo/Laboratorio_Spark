@@ -2,59 +2,59 @@
 
 - [Introducción a Spark](#introduccion-a-spark)
   - [Módulo 1 Conociendo Apache Spark](#modulo-1-conociendo-apache-spark)
-    - [Presentacion del Laboratorio](#presentacion-del-laboratorio)
-    - [Introduccion a Apache Spark](#introduccion-a-apache-spark)
+    - [Presentación del Laboratorio](#presentacion-del-laboratorio)
+    - [Introducción a Apache Spark](#introduccion-a-apache-spark)
       - [Historia](#historia)
       - [Spark VS Hadoop](#spark-vs-hadoop)
     - [Introducción a los RDDs y DataFrames](#introduccion-a-los-rdds-y-dataframes)
       - [Componentes de Spark](#componentes-de-spark)
-      - [Caracteristicas de los RDD](#caracteristicas-de-los-rdd)
-      - [Caracteristicas de los DataFrame](#caracteristicas-de-los-dataframe)
+      - [Características de los RDD](#caracteristicas-de-los-rdd)
+      - [Características de los DataFrame](#caracteristicas-de-los-dataframe)
       - [Cuando Usar RDD](#cuando-usar-rdd)
       - [Cuando Usar DataFrames](#cuando-usar-dataframes)
       - [Resumen](#resumen)
-  - [Modulo 2 Configuracion Ambiente de Trabajo ](#modulo-2-configuracion)
-    - [Opcion 1 Instalacion del ambiente de trabajo en contenedor Docker](#instalacion-del-ambiente-de-trabajo-en-contenedor-docker)
+  - [Módulo 2 Configuración Ambiente de Trabajo ](#modulo-2-configuracion)
+    - [Opción 1 Instalación del ambiente de trabajo en contenedor Docker](#instalacion-del-ambiente-de-trabajo-en-contenedor-docker)
       - [Imagenes de Docker en Juniper](#imagenes-de-docker-en-juniper)
       - [Ejecutar contenedor](#ejecutar-contenedor)
-      - [Configuracion de variables de entorno](#configuracion-de-variables-de-entorno)
+      - [Configuración de variables de entorno](#configuracion-de-variables-de-entorno)
       - [Descarga de Datos](#descarga-de-datos)
-    - [Opcion 2 Instalacion del ambiente de trabajo en Ubuntu](#instalacion-del-ambiente-de-trabajo-en-ubuntu)
-      - [Instalacion de JRE, Python, PIP y Scala](#instalacion-de-jre-python-pip-y-scala)
-      - [Instalacion de  Apache Spark](#instalacion-de-apache-spark)
-      - [Instalacion de Anaconda](#instalacion-de-anaconda)
+    - [Opción 2 Instalación del ambiente de trabajo en Ubuntu](#instalacion-del-ambiente-de-trabajo-en-ubuntu)
+      - [Instalación de JRE, Python, PIP y Scala](#instalacion-de-jre-python-pip-y-scala)
+      - [Instalación de  Apache Spark](#instalacion-de-apache-spark)
+      - [Instalación de Anaconda](#instalacion-de-anaconda)
       - [Instalamos py4j en Anaconda](#instalamos-py4j-en-anaconda)
     - [Jupyter vs CLI: ejecucion de Spark desde la linea de comandos](#jupyter-vs-cli-ejecucion-de-spark-desde-la-linea-de-comandos)
     - [Jupyter vs CLI: ejecucion de Spark en Jupyter Notebook](#jupyter-vs-cli-ejecucion-de-spark-en-jupyter-notebook)
-  - [Modulo 3 Operaciones RDDs](#modulo-3-operaciones-rdds)
+  - [Módulo 3 Operaciones RDDs](#modulo-3-operaciones-rdds)
     - [RDD y DataFrames](#rdd-y-dataframes)
       - [RDD](#rdd)
       - [DataFrames](#dataframes)
     - [Transformaciones y Acciones](#transformaciones-y-acciones)
-    - [Acciones de modificacion sobre RDDs](#acciones-de-modificacion-sobre-rdds)
+    - [Acciones de modificación sobre RDDs](#acciones-de-modificacion-sobre-rdds)
     - [Acciones de conteo sobre RDDs](#acciones-de-conteo-sobre-rdds)
-    - [Solucion reto deportistas](#solucion-reto-deportistas)
+    - [Solución reto deportistas](#solucion-reto-deportistas)
     - [Operaciones Numéricas](#operaciones-numéricas)
-  - [Modulo 4 Data Frames y SQL](#modulo-4-data-frames-y-sql)
+  - [Módulo 4 Data Frames y SQL](#modulo-4-data-frames-y-sql)
     - [Creación de DataFrames](#creación-de-dataframes)
       - [Beneficios DataFrames](#beneficios-dataframes)
     - [Inferencia de tipos de datos](#inferencia-de-tipos-de-datos)
     - [Operaciones sobre DF](#operaciones-sobre-df)
     - [Agrupaciones y operaciones join sobre DF](#agrupaciones-y-operaciones-join-sobre-df)
-    - [Solucion reto joins](#solucion-reto-joins)
+    - [Solución reto joins](#solucion-reto-joins)
     - [Funciones de agrupación](#funciones-de-agrupación)
     - [SQL](#sql)
     - [Que es un UDF](#que-es-un-udf)
     - [UDF](#udf)
-  - [Modulo 5 Persistencia y particionado](#modulo-5-persistencia-y-particionado)
+  - [Módulo 5 Persistencia y particionado](#modulo-5-persistencia-y-particionado)
     - [Particionado](#particionado)
     - [Comprendiendo la persistencia y particionado](#comprendiendo-la-persistencia-y-particionado)
       - [Persistencia](#persistencia)
     - [Particionando datos](#particionando-datos)
 
-## Modulo 1 Conociendo Apache Spark
+## Módulo 1 Conociendo Apache Spark
 
-### Presentacion del Laboratorio
+### Presentación del Laboratorio
 
 En este Laboratorio aprenderemos sobre Spark y sus diferencias con otros frameworks, desarrollaremos un proceso ETL, aprenderemos sobre Manejo de las estructuras base de Spark y fundamentos de calidad de datos
 
@@ -63,7 +63,7 @@ Requisitos previos
 - Programación Orientada a Objetos
 - SQL
 
-### Introduccion a Apache Spark
+### Introducción a Apache Spark
 
 Spark es un framework de trabajo para el desarrollo de grandes datos o big data y se preocupa de la velocidad y continuidad del procesamiento de datos, en contraparte de Hadoop que se preocupa por un almacenamiento grande de datos.
 
@@ -81,15 +81,16 @@ No es una base de datos
 ![spark_2](images/spark_1.png)
 
 **OLTP:** Sistema de modificacion de Base de Datos online (Transaccional)
+
 **OLAP:** Sistema de respuesta de consulta de datos online (Analisis)
 
 Spark debe estar conectado a un Data warehouse para poder aprovechar toda su funcionalidad
 
-#### Hisotoria
+#### Historia
 
 - Nace en 2009 en la Universidad Berkeley
 - Hereda de Hadoop
-- Version3 fue liberada en Junio 2020
+- Versión 3 fue liberada en Junio 2020
 
 #### Spark VS Hadoop
 
@@ -99,7 +100,7 @@ Spark debe estar conectado a un Data warehouse para poder aprovechar toda su fun
 
 - No depende de un sistema de archivos.
 
-### Introduccion a los RDDs y DataFrames
+### Introducción a los RDDs y DataFrames
 
 #### Componentes de Spark
 
@@ -129,11 +130,11 @@ Todas las **transformaciones** las realizamos sin problema, realizando una **Acc
 
 En este ejemplo creamos  dos RDD **comala** y **paramo** sin embargo el archivo pedroParamo.txt podría no existir, sin embargo hasta que yo ejecute el count() (una acción sabremos que hubo un error)
 
-#### Caracteristicas de los DataFrame
+#### Características de los DataFrame
 
 - **Formato** a diferencia de un RDD poseen columnas lo cual les otorga tipos de datos.
 
-- **Optimizacion** poseen una mejor implementación, lo cual los hace preferibles (aunque están construidos sobre los RDD).
+- **Optimización** poseen una mejor implementación, lo cual los hace preferibles (aunque están construidos sobre los RDD).
 
 - **Facilidad de creación** Se pueden crear desde una base de datos externa, archivo o RDD existente.
 
@@ -155,16 +156,16 @@ En este ejemplo creamos  dos RDD **comala** y **paramo** sin embargo el archivo 
 
 #### Resumen
 
-Los RDD y DataFrames tienen 3 caracteristicas base
+Los RDD y DataFrames tienen 3 características base
 
-- Distribuidos
+- Distribuídos
 - Inmutables
 - Perezosos
 - Estructura (solo DataFrame)
 
-## Modulo 2 Configuracion Ambiente de Trabajo
+## Módulo 2 Configuración Ambiente de Trabajo
 
-### Opcion 1 Instalacion del ambiente de trabajo en contenedor Docker]
+### Opción 1 Instalación del ambiente de trabajo en contenedor Docker]
       -> Imagenes de Docker en Juniper
       
         primero buscamos una imagen que mejor se acomode al grupo de Software que necesitamos tener en nuestro contenedor, en la siguiente URL, puedes buscar la imagen que mejor
