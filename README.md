@@ -338,7 +338,14 @@ Ejecutamos el código con spark-submit y optemos los resultados
 
 ## JUPYTER NOTEBOOK.
 
-Ahora para entrar a Jupyter notebook, en la terminal donde se ejecuto el contenedor, te tiene que entregar unas URLs en donde puedes acceder a Jupyter, solo cambia el host por "localhost".
+Ahora para entrar a Jupyter notebook, en la terminal donde se ejecuto el contenedor, te entregará unas URLs en donde puedes acceder a Jupyter, solo cambia el host
+por "localhost", o mantiene la ip 127.0.0.1, como se muestra en la imagen siguiente:
+
+![spark_40](images/spark_40.png)
+
+Cabe recordar que esta dirección URL la debes abrir en un browser desde la máquina anfitriona, si logras visualizar esto, muy buen trabajo!
+
+![spark_41](images/spark_41.png)
 
 Siguiente abre un notebook en Python 3.
 
