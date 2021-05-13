@@ -463,29 +463,8 @@ Para una mejor comprensión, a continuación el diagrama de relaciones entre las
 
 Ahora realizaremos el encoding de los valores de las medallas y obtenemos los puntos que tiene cada país.
 
-![spark_10](images/spark_10.png)
-
-```py
-# el valor de puntaje de paises a lo largo del tiempo
-valoresMedallas = {'Gold': 7,
-                   'Silver': 5,
-                   'Bronze': 4}
-
-paisesMedallas = deportistaPaises.join(resultadoGanador)
-
-paisesMedallas = paisesMedallas \
-    .map(lambda x: (x[1][0][-1], valoresMedallas[x[1][1] ] ) )
-
-
-paisesMedallas.take(5)
-
-from operator import add
-
-conclusion = paisesMedallas.reduceByKey((add)) \
-    .sortBy(lambda x:x[1], ascending=False)
-
-conclusion.take(10)
-```
+![spark_46](images/spark_46.png)
+![spark_47](images/spark_47.png)
 
 ## Modulo 4 Data Frames y SQL
 
