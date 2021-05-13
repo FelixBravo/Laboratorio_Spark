@@ -349,7 +349,9 @@ Cabe recordar que esta dirección URL la debes abrir en un browser desde la máq
 
 Siguiente abre un notebook en Python 3.
 
-Llamamos los siguientes modulos de spark (los mas clásicos) sparkContext y SparkSession
+Llamamos los siguientes modulos de spark (los mas clásicos) sparkContext y SparkSession.
+Para ejecutar código en una celda debes presionar (control + enter), para ejecutar código en una celda y cree otra celda abajo (alt + enter). 
+
 
 ```bash
 from pyspark import SparkContext
