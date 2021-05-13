@@ -433,6 +433,7 @@ Ahora que conoces más sobre RDD y DataFrames es momento de comenzar a utilizarl
 Ahora vemos como crear un RDD a partir de un archivo csv.
 
 ![spark_7](images/spark_7.png)
+![spark_42](images/spark_42.png)
 
 Observamos en spark UI como se representa el grafo de nuestra acción y su metadata.
 
