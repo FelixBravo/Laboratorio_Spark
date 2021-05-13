@@ -452,7 +452,7 @@ Interactuamos con el RDD anterior.
 Ahora aprendemos como operar con dos o mas RDDs y obtener valores significativos con ellos.
 
 ![spark_10](images/spark_10.png)
-![spark_43](images/spark_43.png)
+![spark_43](images/spark_43.jpg)
 ![spark_44](images/spark_44.png)
 ![spark_45](images/spark_45.png)
 
