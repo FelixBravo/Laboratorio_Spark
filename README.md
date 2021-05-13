@@ -459,33 +459,6 @@ Para una mejor comprensión, a continuación el diagrama de relaciones entre las
 ![spark_44](images/spark_44.png)
 ![spark_45](images/spark_45.png)
 
-### Solucion reto deportistas
-
-Veremos la solucion al reto.
-
-```py
-deportistaPaises = deportistaOlimpicoRDD \
-    .map(lambda l: [l[-1], l[:-1]]) \
-    .join(equiposOlimpicosRDD.map(lambda x: [x[0], x[2]]))
-
-deportistaPaises.join(resultadoGanador).take(6)
-```
-
-output
-
-```py
-[('74',
-  ((['65', 'Patimat Abakarova', '2', '21', '165', '49'], 'AZE'), 'Gold')),
- ('74', ((['129', 'Ruslan Abbasov', '1', '22', '181', '74'], 'AZE'), 'Gold')),
- ('74', ((['130', 'Tural Abbasov', '1', '18', '182', '76'], 'AZE'), 'Gold')),
- ('74', ((['131', 'Tran Abbasova', '2', '33', '159', '53'], 'AZE'), 'Gold')),
- ('74',
-  ((['335', 'Abdulqdir Abdullayev', '1', '28', '188', '91'], 'AZE'), 'Gold')),
- ('74',
-  ((['336', 'Arif Yadulla Abdullayev', '1', '27', '164', '60'], 'AZE'),
-   'Gold'))]
-```
-
 ### Operaciones Numéricas
 
 Ahora realizaremos el encoding de los valores de las medallas y obtenemos los puntos que tiene cada país.
