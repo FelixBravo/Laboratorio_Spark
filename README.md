@@ -455,8 +455,6 @@ Ahora aprendemos como operar con dos o mas RDDs y obtener valores significativos
 
 Para una mejor comprensión, a continuación el diagrama de relaciones entre las entidades que estamos trabajando.
 
-![spark_10](images/spark_10.png)
-![spark_10](images/spark_10.png)
 ![spark_43](images/spark_43.jpg)
 ![spark_44](images/spark_44.png)
 ![spark_45](images/spark_45.png)
