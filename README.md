@@ -209,20 +209,15 @@ Los RDD y DataFrames tienen 3 características base
         
         Para entrar al contenedor, ejecutamos:
         
-        ```
-          docker exec -it sparklab bash
-        ```
-        
+        -->  docker exec -it sparklab bash
+       
         Una vez dentro del contenedor podemos ejecutar pwd, para saber la ruta en la cual estamos parados. 
-        ```
-          pwd
-        ```
+        
+        -->  pwd
         
         Finalmente podemos listar los archivos que estan en nuestro contenedor, con el comando ls -lac. 
         
-        ```
-          ls -lac
-        ```
+        -->  ls -lac
 
 
 ![spark_32](images/spark_32.png) 
