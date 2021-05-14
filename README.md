@@ -255,7 +255,7 @@ Los RDD y DataFrames tienen 3 características base
 
 ![spark_35](images/spark_35.png)   
       
-       - unzip aboratorio-apache-spark.zip
+       - unzip laboratorio-apache-spark.zip
 
 ![spark_36](images/spark_36.png) 
 
@@ -274,7 +274,11 @@ En los binarios observamos los siguientes.
 - **pyspark**  permite ejecutar código en vivo  como un interprete
 - **spark-submit** permite ejecutar un script como cualquier archivo.py
 
-Utilizamos los archivos data.csv y codeExample.py que se encuentran entre los archivos descargados.
+
+Ahora con alguno de los archivos descargados, vamos a realizar una prueba de ejecutar un archivo Python, llamado codeExample.py, 
+el cual utiliza los datos del archivo 'data.csv'.
+Para ver las primeras 10 lineas del archivo data.csv, entramos a la carpeta 'laboratorio' con el comando "cd laboratorio", y dentro 
+de esa carpeta ejecutamos "head -n 10 data.csv", como se ilustra a continuación.
 
 ```bash
 head -n 10 data.csv
@@ -291,6 +295,8 @@ CA,Yellow,53
 WA,Green,60
 OR,Green,71
 ```
+
+Tambien podemos ver el código python del archivo "codeExample.py, ejecutando el comando "cat codeExample.py".
 
 ```py
 import sys
@@ -339,7 +345,10 @@ if __name__ == "__main__":
 
 ```
 
-Ejecutamos el código con spark-submit y optemos los resultados
+Finalmente ejecutamos el código del archivo "codeExample.py", con los binarios del programa "spark-submit", y obtenemos los resultados en la terminal.
+
+Primero debemos ubicar la dirección física donde esta instalado el programa "spark-submit", en mi caso esta dentro de la instalación de "SPARK",
+comprueben el path antes de ejecutar, despues viene el archivo con el código python a ejecutar y finalmente el archivo que se utiliza en el programa.
 
 ```bash
 ~/spark/bin/spark-submit codeExample.py data.csv
