@@ -208,7 +208,10 @@ Los RDD y DataFrames tienen 3 características base
 ![spark_31](images/spark_31.png) 
         
         Para entrar al contenedor, ejecutamos:
-         - docker exec -it sparklab bash
+        
+        ´´´bash
+         docker exec -it sparklab bash
+        ´´´
 
 ![spark_32](images/spark_32.png) 
         
