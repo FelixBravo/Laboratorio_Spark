@@ -350,8 +350,9 @@ Finalmente ejecutamos el código del archivo "codeExample.py", con los binarios 
 Primero debemos ubicar la dirección física donde esta instalado el programa "spark-submit", en mi caso esta dentro de la instalación de "SPARK",
 comprueben el path antes de ejecutar, despues viene el archivo con el código python a ejecutar y finalmente el archivo que se utiliza en el programa.
 
+
 ```bash
-~/spark/bin/spark-submit codeExample.py data.csv
+/usr/local/spark-3.1.1-bin-hadoop3.2/bin/spark-submit codeExample.py data.csv
 ```
 
 
