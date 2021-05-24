@@ -245,6 +245,10 @@ Los RDD y DataFrames tienen 3 características base
 ![spark_33](images/spark_33.png)      
             
          Para salir del archivo "control + x", guardas y confirmas el nombre del archivo, luego te deja nuevamente en el promp de la terminal.
+         
+         * Un paso adicional es que debes recargar nuevamente el archivo .bashrc, y el comando es el siguiente:
+         
+         -> source .bashrc
        
     -> Descarga de Datos
       
