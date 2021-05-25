@@ -497,8 +497,8 @@ Ahora realizaremos el encoding de los valores de las medallas y obtenemos los pu
 #### Beneficios DataFrames
 
 - Permite procesar como una tabla de base de datos los DF.
-- Poseen estructura y pueden ser creados como ls DF.
-- Una optimizacion debido al optimizador de consultas **Catalyst** y el motor de Ejecucion **Tungsten**.
+- Poseen estructura y pueden ser creados como los DF.
+- Una optimización superior debido al optimizador de consultas **Catalyst** y el motor de Ejecución **Tungsten**.
 
 ![spark_12](images/spark_12.png)
 
