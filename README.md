@@ -506,6 +506,10 @@ Ahora realizaremos el encoding de los valores de las medallas y obtenemos los pu
 
 Internamente Spark ya realizo varias operaciones para crear el DataFrame.
 
+![spark_48](images/spark_48.png)
+
+![spark_49](images/spark_49.png)
+
 ### Inferencia de tipos de datos
 
 ![spark_14](images/spark_14.png)
